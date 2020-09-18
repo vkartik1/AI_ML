@@ -1,0 +1,61 @@
+SOURCE	ITEM_DESCRIPTION	CATEGORY
+REQUEST_FOR_QUOTE	Water Can - 12 gallon	Building Services
+REQUEST_FOR_QUOTE	Water Can	Building Services
+REQUEST_FOR_QUOTE	Water	Building Services
+REQUEST_FOR_QUOTE	Water Cooler	Building Services
+REQUEST_FOR_QUOTE	Espresso Coffee Machine	Building Services
+REQUEST_FOR_QUOTE	Coffee Filters - 120 pack	Building Services
+REQUEST_FOR_QUOTE	Green Mountain Coffee	Building Services
+REQUEST_FOR_QUOTE	Nescafe	Building Services
+REQUEST_FOR_QUOTE	Dish Soap - palmolive	Building Services
+REQUEST_FOR_QUOTE	Organic Milk 2%	Building Services
+REQUEST_FOR_QUOTE	Milk - Fat Freee	Building Services
+REQUEST_FOR_QUOTE	Canvas Tent	Camping
+REQUEST_FOR_QUOTE	Camping stove	Camping
+REQUEST_FOR_QUOTE	Bike -Schwinn	Camping
+REQUEST_FOR_QUOTE	Propane	Camping
+REQUEST_FOR_QUOTE	Sleeping Bags	Camping
+REQUEST_FOR_QUOTE	Hiking Shoes	Camping
+REQUEST_FOR_QUOTE	Fishing Rods	Camping
+REQUEST_FOR_QUOTE	Microsoft Office Software	Computer Software
+REQUEST_FOR_QUOTE	Dell Monitor = 21 inches	Computer Supplies
+REQUEST_FOR_QUOTE	Gaming Keyboard	Computer Supplies
+REQUEST_FOR_QUOTE	Apple Ipad - Newest model	Computer Supplies
+REQUEST_FOR_QUOTE	Laser Printer - 1200 ppm	Computer Supplies
+REQUEST_FOR_QUOTE	Macbook Pro	Computer Supplies
+REQUEST_FOR_QUOTE	Magic Mose	Computer Supplies
+REQUEST_FOR_QUOTE	USB Cabl	Computer Supplies
+REQUEST_FOR_QUOTE	Network Cabl	Computer Supplies
+REQUEST_FOR_QUOTE	Ergonomic Chair	Furniture
+REQUEST_FOR_QUOTE	Standing Ergo Desk	Furniture
+REQUEST_FOR_QUOTE	Footrest - 45 deg incline	Office Ergonomics
+REQUEST_FOR_QUOTE	Glare Filter - 21 inch	Office Ergonomics
+REQUEST_FOR_QUOTE	Standing Mat - ribber	Office Ergonomics
+REQUEST_FOR_QUOTE	Wrist Support - rubber	Office Ergonomics
+REQUEST_FOR_QUOTE	Blue Pens	Office Supplies
+REQUEST_FOR_QUOTE	Black pens 	Office Supplies
+REQUEST_FOR_QUOTE	Folder	Office Supplies
+REQUEST_FOR_QUOTE	Notepad	Office Supplies
+REQUEST_FOR_QUOTE	Wilson Tennis Balls	Sports
+REQUEST_FOR_QUOTE	Penn Tennis Balls	Sports
+REQUEST_FOR_QUOTE	Tennis Balls	Sports
+REQUEST_FOR_QUOTE	Tennis Rackets	Sports
+REQUEST_FOR_QUOTE	Badminton Racket	Sports
+REQUEST_FOR_QUOTE	Nike Mens Shoes	Sports
+REQUEST_FOR_QUOTE	Nike Mens Shoes Size 8	Sports
+REQUEST_FOR_QUOTE	Basket ball Hoop	Sports
+REQUEST_FOR_QUOTE	Yoga Mat	Sports
+REQUEST_FOR_QUOTE	Baseball Hat	Sports
+REQUEST_FOR_QUOTE	Table Tennis Bat	Sports
+REQUEST_FOR_QUOTE	Frisbee	Sports
+REQUEST_FOR_QUOTE	Mountain Bike	Sports
+REQUEST_FOR_QUOTE	Street bike	Sports
+REQUEST_FOR_QUOTE	Ski pant - Mens	Sports
+REQUEST_FOR_QUOTE	Trampoline - 5 feet	Sports
+REQUEST_FOR_QUOTE	Cricket Bat - Scepter	Sports
+REQUEST_FOR_QUOTE	Cricket Ball - ICC standard	Sports
+REQUEST_FOR_QUOTE	Cricket Kit with Pads	Sports
+REQUEST_FOR_QUOTE	"Jersey, Tampa Bay - Large"	Sports
+REQUEST_FOR_QUOTE	Jersey - X Large	Sports
+REQUEST_FOR_QUOTE	Bulls Jersey - Large	Sports
+REQUEST_FOR_QUOTE	Broncos Jersey - Xlarge	Sports
