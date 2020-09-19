@@ -1,6 +1,6 @@
-### Predict Supplier, with probability, for a given Item and Category
+## Predict Supplier, with probability, for a given Item and Category
 
-# Create a model and deploy it on a flask server
+### Create a model and deploy it on a flask server
 1. Create a pickle file and also print predictions for a sample data file,  data/test_data.txt.
       python src/model_supplier.py
 2. Start a flask server for the predict API. 
@@ -10,7 +10,7 @@
 4. Run the automated test for the prediction api
       pytest
 
-# Docker
+### Docker
 1. Build a docker image
       docker-compose build
 2. Bring up the server to process the Prediction REST API. Make sure to "ctrl-c" the server you brought up in earlier step
