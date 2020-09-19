@@ -23,7 +23,6 @@ from utils import ItemSelector
 from utils import CategorySelector
 from utils import NumberSelector
 from utils import Tokenizer
-from utils import all_stopwords
 
 data_directory="data/"
 data_file_name=data_directory+'input_data.txt'
@@ -88,12 +87,12 @@ y_pred=model.predict(X_test)
 from sklearn.metrics import confusion_matrix,accuracy_score
 acc= accuracy_score(y_test,y_pred)
 print(acc)
-pickle.dump(model, open(r'good_supplier_predictions.pkl','wb'))
+pickle.dump(model, open(r'supplier_predictions.pkl','wb'))
 
 
 ######### Prediction ##########
 def predict(test_file_name):
-  loadedModel = pickle.load(open("good_supplier_predictions.pkl","rb"))
+  loadedModel = pickle.load(open("supplier_predictions.pkl","rb"))
   new_df=pd.read_csv(test_file_name, sep='\t')
   #new_items=new_df.loc[:,['ITEM_DESCRIPTION']]
   if 'SUPPLIER' in new_df.columns:

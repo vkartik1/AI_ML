@@ -28,9 +28,9 @@ class NumberSelector(BaseEstimator, TransformerMixin):
     def transform(self, X):
         return X[[self.field]]
 
-all_stopwords = stopwords.words('english')
- 
 def stop_words(str_input):
+   nltk.download('stopwords', quiet=True, raise_on_error=True)
+   all_stopwords = stopwords.words('english')
    word_list = str_input.apply(lambda x: [item for item in x if item not in all_stopwords])
    return word_list
 

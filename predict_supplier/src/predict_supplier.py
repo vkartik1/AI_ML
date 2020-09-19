@@ -12,7 +12,6 @@ from utils import ItemSelector
 from utils import CategorySelector
 from utils import NumberSelector
 from utils import Tokenizer
-from utils import all_stopwords
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -23,7 +22,7 @@ def home():
 <p>Prediction usease for Sourcing.</p>'''
 
 ######### Get Request params and call the prediction API ##########
-@app.route('/api/v1/sourcing/auction', methods=['GET'])
+@app.route('/api/v1/sourcing/supplier_prediction', methods=['GET'])
 def predict_supplier():
     # Check if an item was provided
     if 'item' in request.args:
@@ -48,7 +47,7 @@ def predict_supplier():
 ######### Prediction ##########
 def predict(item):
 
-    loadedModel = pickle.load(open("good_supplier_predictions.pkl","rb"))
+    loadedModel = pickle.load(open("supplier_predictions.pkl","rb"))
     data={'ITEM_DESCRIPTION': [item]}
     items=pd.DataFrame(data, columns=['ITEM_DESCRIPTION'])
     new_y_pred=loadedModel.predict(items)
@@ -67,4 +66,4 @@ def predict(item):
     return new_df.to_dict(orient="records")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')

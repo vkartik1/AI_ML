@@ -1,6 +1,7 @@
 # test_prediction.py
-import sys
-sys.path.append('./prediction/')
+import sys, os
+src_path=os.path.join(sys.path[0],'../src')
+sys.path.append(src_path)
 import json
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -10,26 +11,25 @@ import pickle
 import numpy as np
 from flask import jsonify
 
-from utils import ItemSelector
-from utils import CategorySelector
-from utils import NumberSelector
-from utils import Tokenizer
-from utils import all_stopwords
+#from utils import ItemSelector
+#from utils import CategorySelector
+#from utils import NumberSelector
+#from utils import Tokenizer
+#from utils import all_stopwords
 
 from predict_supplier import app
 
 def test_single_api_call():
-    print('start')
     data = {'item': 'Bike'}
 
     expected_response = [[{'supplier': 'REI', 'probability': 0.37}, {'supplier': 'Olympia Sporting Goods', 'probability': 0.26}]]
 
     with app.test_client() as client:
         # Test client uses "query_string" instead of "params"
-        response = client.get('/api/v1/sourcing/auction', query_string=data)
-        assert response.status_code == 200
+        response = client.get('/api/v1/sourcing/supplier_prediction', query_string=data)
         data = json.loads(response.data)
         print(data)
+        assert response.status_code == 200
         assert (data[0][0]["supplier"]) == 'REI'
         assert (data[0][0]["probability"] >= 0.30 )
         assert (data[0][1]["supplier"] == 'Olympia Sporting Goods')
