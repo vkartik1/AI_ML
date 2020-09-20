@@ -60,11 +60,11 @@ Lets now create build, test pipeline using Jenkins
    a. Select "this project is parametrized" and create a "String Parameter" with name="project_root_dir". I am using this name in the following step, so if you want to change the value of the parameter name, make sure to do similar change in following steps  
    b. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github  
    c. Build Stage: Click "Add build step"->"Execute Shell". In the window, type in the below line  
-        bash -e ${project_root_dir}/jenkins/build.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash -e ${project_root_dir}/jenkins/build.sh ${project_root_dir} ${WORKSPACE}  
    d. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        bash -e ${project_root_dir}/jenkins/test.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash -e ${project_root_dir}/jenkins/test.sh ${project_root_dir} ${WORKSPACE}  
    e. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
-        Test reports XMLs: **/predict_supplier_results.xml  
+        &ensp;Test reports XMLs: **/predict_supplier_results.xml  
       Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
 5. Go to the newly created project -> Build with Parameters -> make sure the "project_root_dir" is correct and click "Build"  
 6. You should see the build+test successful, if not click the test run and check the console output  
