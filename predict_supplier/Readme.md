@@ -17,3 +17,10 @@
       docker-compose up
    Now try invoking the same REST API url provided earlier
 
+### Kubernetes support
+1. Appy the deployment file which has the load balancer defined to run on port 6000
+      kubectl apply -f deployment.yaml
+2. make sure there are 4 pods running the supplier-prediction-app
+      kubectl get pods
+3. Run the predictios service (port 6000)
+      http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'
