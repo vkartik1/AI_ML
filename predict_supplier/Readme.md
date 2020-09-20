@@ -4,7 +4,7 @@ We will create prediction REST API that will predict a supplier for a given item
 1. We will first create a model and try running this via flask server using python command   
 2. Then, instead of running the REST API using the python command, we will use Docker
 3. We will then deploy the app on the kubernetes cluster running on 4 pods (replicas=4)
-4. Lastly we will use helm - just for learning purpos. There is not really much value for helm, for this simple usecase
+4. Lastly we will use helm - just for learning purpose. There is not really much value for helm, for this simple usecase
 
 ### Create a model and deploy it on a flask server
 1. Generate the model pickle file and also print predictions for a sample data specified in, data/test_data.txt.  
