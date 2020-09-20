@@ -30,8 +30,8 @@ def test_single_api_call():
         data = json.loads(response.data)
         print(data)
         assert response.status_code == 200
-#        assert ((data[0][0]["supplier"] == 'REI' and data[0][0]["probability"] >= 0.30) OR (data[0][1]["supplier"] == 'REI' and data[0][1]["probability"] >= 0.30 ))
-#        assert ((data[0][0]["supplier"] == 'Olympia Sporting Goods' and data[0][0]["probability"] >= 0.20) OR (data[0][1]["supplier"] == 'Olympia Sporting Goods'and data[0][1]["probability"] >= 0.20 ))
+        assert ((data[0][0]["supplier"] == 'REI' and data[0][0]["probability"] >= 0.20) or (data[0][1]["supplier"] == 'REI' and data[0][1]["probability"] >= 0.20 ))
+        assert ((data[0][0]["supplier"] == 'Olympia Sporting Goods' and data[0][0]["probability"] >= 0.20) or (data[0][1]["supplier"] == 'Olympia Sporting Goods'and data[0][1]["probability"] >= 0.20 ))
      
         # response.data returns bytes, convert to a dict.
         # assert json.loads(response.data) == expected_response
