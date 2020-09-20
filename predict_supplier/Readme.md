@@ -42,7 +42,7 @@ kill the docker-compose (ctrl-c)
 2. Run the prediction service (port 6000).   
 &ensp;http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'. 
 3. Stop the prediction service.   
-&ensp;helm uninstall predict-suppplier-chart; 
+&ensp;helm uninstall predict-suppplier-chart 
 
 Helm Note (optional read): This just describes what changes were done to generate the code. Feel free to skip this notes section. 
 1. I have created the helm directories with the "helm create supplier-chart" command.   
