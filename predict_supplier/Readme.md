@@ -12,7 +12,8 @@ We will create prediction REST API that will predict a supplier for a given item
 2. Start a flask server for the predict API.  
 &ensp;python src/predict_supplier.py. 
 3. Invoke the REST API. This should return supplier(s) with probability.   
-&ensp;http://127.0.0.1:5000/api/v1/sourcing/supplier_prediction?item='Street Bike'. 
+&ensp;http://127.0.0.1:5000/api/v1/sourcing/supplier_prediction?item='Street Bike'.   
+Kill the Flask server (ctrl-c)
 4. Run the automated test for the prediction api.   
 &ensp;pytest. 
 
@@ -22,7 +23,8 @@ We will create prediction REST API that will predict a supplier for a given item
 2. Bring up the server to process the Prediction REST API. Make sure to "ctrl-c" the server you brought up in earlier step.   
 &ensp;docker-compose up. 
 3. Now try invoking the same REST API url.    
-&ensp;http://127.0.0.1:5000/api/v1/sourcing/supplier_prediction?item='Street Bike. 
+&ensp;http://127.0.0.1:5000/api/v1/sourcing/supplier_prediction?item='Street Bike.   
+kill the docker-compose (ctrl-c)
 
 ### Kubernetes support
 1. Apply the deployment file which has the load balancer defined to run on port 6000.   
@@ -30,13 +32,17 @@ We will create prediction REST API that will predict a supplier for a given item
 2. make sure there are 4 pods running the supplier-prediction-app.   
 &ensp;kubectl get pods. 
 3. Run the prediction service (port 6000).   
-&ensp;http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'. 
+&ensp;http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'.   
+4. Delete the deployment. 
+&ensp;kubectl delete deployment supplier-prediction-app
 
 ### Helm support
 1. uninstall existing chart (for reruns) and install the new chart.   
 &ensp;helm uninstall predict-suppplier-chart; helm install predict-suppplier-chart supplier-chart/ --values supplier-chart/values.yaml. 
 2. Run the prediction service (port 6000).   
 &ensp;http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'. 
+3. Stop the prediction service.   
+&ensp;helm uninstall predict-suppplier-chart; 
 
 Helm Note (optional read): This just describes what changes were done to generate the code. Feel free to skip this notes section. 
 1. I have created the helm directories with the "helm create supplier-chart" command.   
