@@ -49,3 +49,25 @@ Helm Note (optional read): This just describes what changes were done to generat
 2. The deployment.yaml that was created in previous section (Kubernetes support) is used instead of the default serices.yaml and deployment.yaml created by the helm create command. The deployment.yaml has been splt to deployment.yaml and service.yaml with variables instead of hardcoded values. 
 3. Deleted other yaml files and modified the  values.yaml to keep the port#s consistent with the values used in previous steps: load balancer port=6000. 
 4. Review the values.yaml for the comment "Modification", to see what changes were done. 
+
+### Jenkins Pipeline
+Lets now create build, test pipeline using Jenkins
+
+1. Find the location of python, pip and pytest. Update the PYTHON_PIP_PYTEST_PATH value with the PATH for python, pip an pytest in the files, jenkins/build.sh and jenkins/test.sh  
+2. Install Junit plugin. Jenkins->Manage Jenkins->Manage Plugins->Available -> Search, install JUnit plugin and restart Jenkins  
+3. Open Jenkins->New Item->Freestyle Project-> Give a name for your project  
+4. Configure the new project  
+   a. Select "this project is parametrized" and create a "String Parameter" with name="project_root_dir". I am using this name in the following step, so if you want to change the value of the parameter name, make sure to do similar change in following steps  
+   b. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github  
+   c. Build Stage: Click "Add build step"->"Execute Shell". In the window, type in the below line  
+        bash -e ${project_root_dir}/jenkins/build.sh ${project_root_dir} ${WORKSPACE}  
+   d. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        bash -e ${project_root_dir}/jenkins/test.sh ${project_root_dir} ${WORKSPACE}  
+   e. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
+        Test reports XMLs: **/predict_supplier_results.xml  
+      Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
+5. Go to the newly created project -> Build with Parameters -> make sure the "project_root_dir" is correct and click "Build"  
+6. You should see the build+test successful, if not click the test run and check the console output  
+   
+ 
+
