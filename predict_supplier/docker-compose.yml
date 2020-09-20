@@ -2,5 +2,6 @@ version: '3'
 services:
   web:
     build: .
+    image: supplier-prediction-image:v1
     ports:
       - "5000:5000"
