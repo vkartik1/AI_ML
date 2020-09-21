@@ -10,7 +10,9 @@
 ####
 PROJECT_ROOT_DIR=$1
 JENKINS_WORKSPACE_DIR=$2
-
 cd ${PROJECT_ROOT_DIR}
-pip install -r ${PROJECT_ROOT_DIR}/src/requirements.txt
-python src/model_supplier.py 
+
+# Its ok if uninstall errors out when chart doesnt exist
+helm uninstall predict-suppplier-chart >& /dev/null
+echo "About to install chart"
+helm install predict-suppplier-chart supplier-chart/ --values $PROJECT_ROOT_DIR/supplier-chart/values.yaml

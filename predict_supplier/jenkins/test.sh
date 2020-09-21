@@ -12,6 +12,4 @@ PROJECT_ROOT_DIR=$1
 JENKINS_WORKSPACE_DIR=$2
 
 cd ${PROJECT_ROOT_DIR}
-PYTHON_PIP_PYTEST_PATH=/Users/vkartik/anaconda/anaconda3/bin
-PATH=$PYTHON_PIP_PYTEST_PATH:$PATH
 pytest --junit-xml=$JENKINS_WORKSPACE_DIR/predict_supplier_results.xml

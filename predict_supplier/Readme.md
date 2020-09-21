@@ -1,7 +1,7 @@
 ## Predict Supplier, with probability, for a given Item and Category
 
 We will create prediction REST API that will predict a supplier for a given item and category. We will try running the REST APi in differen ways - from running python command to using helm. 
-1. We will first create a model and try running this via flask server using python command   
+1. We will first create a model and try running this via flask server usingG python command   
 2. Then, instead of running the REST API using the python command, we will use Docker
 3. We will then deploy the app on the kubernetes cluster running on 4 pods (replicas=4)
 4. Lastly we will use helm - just for learning purpose. There is not really much value for helm, for this simple usecase
@@ -63,11 +63,19 @@ Lets now create build, test pipeline using Jenkins
         &ensp;bash -e ${project_root_dir}/jenkins/build.sh ${project_root_dir} ${WORKSPACE}  
    d. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
         &ensp;bash -e ${project_root_dir}/jenkins/test.sh ${project_root_dir} ${WORKSPACE}  
-   e. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
+   e. Create Image Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        &ensp;bash -e ${project_root_dir}/jenkins/create_image.sh ${project_root_dir} ${WORKSPACE}  
+   f. Deploy / Helm Install Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        &ensp;bash -e ${project_root_dir}/jenkins/deploy.sh ${project_root_dir} ${WORKSPACE}  
+   g. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
         &ensp;Test reports XMLs: **/predict_supplier_results.xml  
       Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
 5. Go to the newly created project -> Build with Parameters -> make sure the "project_root_dir" is correct and click "Build"  
 6. You should see the build+test successful, if not click the test run and check the console output  
    
+Once the pipeline completes successfully, you should be able to invoke the REST API for the supplier prediction  
+&ensp;http://127.0.0.1:6000/api/v1/sourcing/supplier_prediction?item='Street Bike'
+
+It takes arond 3-5 minutes for the Jenkins pipeline to complete
  
 
