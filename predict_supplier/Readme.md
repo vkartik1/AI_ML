@@ -61,19 +61,19 @@ Lets now create build, test pipeline using Jenkins
 2. Install Junit plugin. Jenkins->Manage Jenkins->Manage Plugins->Available -> Search, install JUnit plugin and restart Jenkins  
 3. Open Jenkins->New Item->Freestyle Project-> Give a name for your project  
 4. Configure the new project  :   
-&ensp;The below instructions in this step, the step4, can be easily achieved without any manual entry by copying the jenkins/config.xml to the $JENKINS_HOME/jobs/<projectname>/config.xml AND by restarting jenkins/reload config
-   a. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github  
-   c. Build Stage: Click "Add build step"->"Execute Shell". In the window, type in the below line  
-        &ensp;bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/build.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
-   d. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/test.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
-   e. Create Image Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/create_image.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
-   f. Deploy / Helm Install Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/deploy.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
-   g. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
-        &ensp;Test reports XMLs: **/predict_supplier_results.xml  
-      Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
+&ensp;The below instructions in this step, the step4, can be easily achieved without any manual entry by copying the jenkins/config.xml to the $JENKINS_HOME/jobs/<projectname>/config.xml AND by restarting jenkins/reload config.   
+&ensp;a. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github.    
+&ensp;b. Build Stage: Click "Add build step"->"Execute Shell". In the window, type in the below line    
+        &ensp;  bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/build.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}    
+&ensp;c. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        &ensp;  bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/test.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
+&ensp;d. Create Image Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        &ensp;  bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/create_image.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
+&ensp;e. Deploy / Helm Install Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
+        &ensp;  bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/deploy.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
+&ensp;f. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
+        &ensp;  Test reports XMLs: **/predict_supplier_results.xml  
+        &ensp;  Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
 5. Go to the newly created project -> Build with Parameters -> make sure the "project_root_dir" is correct and click "Build"  
 6. You should see the build+test successful, if not click the test run and check the console output  
    
