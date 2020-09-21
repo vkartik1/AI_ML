@@ -53,7 +53,10 @@ Helm Note (optional read): This just describes what changes were done to generat
 ### Jenkins Pipeline
 Lets now create build, test pipeline using Jenkins
 
-1. Find the location of python, pip and pytest. Update the PYTHON_PIP_PYTEST_PATH value with the PATH for python, pip an pytest in the files, jenkins/build.sh and jenkins/test.sh  
+1. Set the Jenkins global env variable  
+   a. Find the location of python, pip, docker, helm and pytest.   
+   b. Go to Jenkins -> Manage Jenkins -> Configure System -> Envionment Variables (Checkbox) -> List of Variables -> Name=Path and Value=<Path got from above Step>:$PATH  
+   c. IMPORTANT: In above step, the Name = Path (*Not* PATH). e.g. value for Path = /usr/local/bin/:/Users/Red/anaconda/anaconda3/bin:$PATH
 2. Install Junit plugin. Jenkins->Manage Jenkins->Manage Plugins->Available -> Search, install JUnit plugin and restart Jenkins  
 3. Open Jenkins->New Item->Freestyle Project-> Give a name for your project  
 4. Configure the new project  
