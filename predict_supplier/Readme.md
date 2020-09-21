@@ -57,19 +57,20 @@ Lets now create build, test pipeline using Jenkins
    a. Find the location of python, pip, docker, helm and pytest.   
    b. Go to Jenkins -> Manage Jenkins -> Configure System -> Envionment Variables (Checkbox) -> List of Variables -> Name=Path and Value=<Path got from above Step>:$PATH  
    c. IMPORTANT: In above step, the Name = Path (*Not* PATH). e.g. value for Path = /usr/local/bin/:/Users/Red/anaconda/anaconda3/bin:$PATH
+   d. Similarly set the environment variable PREDICT_SUPPLIER_PROJECT_ROOT_DIR to the location where you downloaded the src, test, jenkins directory is present. You should see <PREDICT_SUPPLIER_PROJECT_ROOT_DIR>/jenkins/build.sh
 2. Install Junit plugin. Jenkins->Manage Jenkins->Manage Plugins->Available -> Search, install JUnit plugin and restart Jenkins  
 3. Open Jenkins->New Item->Freestyle Project-> Give a name for your project  
-4. Configure the new project  
-   a. Select "this project is parametrized" and create a "String Parameter" with name="project_root_dir". I am using this name in the following step, so if you want to change the value of the parameter name, make sure to do similar change in following steps  
-   b. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github  
+4. Configure the new project  :   
+&ensp;The below instructions in this step, the step4, can be easily achieved without any manual entry by copying the jenkins/config.xml to the $JENKINS_HOME/jobs/<projectname>/config.xml AND by restarting jenkins/reload config
+   a. Set the default value of the "project_root_dir" as the location of your "predict_supplier" folder - e.g. /User/kkk/work/AI_ML/predict_supplier. This is the folder under which you have the src and test folders for the predict supplier code that you downloaded from github  
    c. Build Stage: Click "Add build step"->"Execute Shell". In the window, type in the below line  
-        &ensp;bash -e ${project_root_dir}/jenkins/build.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/build.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
    d. Test Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash -e ${project_root_dir}/jenkins/test.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash -e ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/test.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
    e. Create Image Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash -e ${project_root_dir}/jenkins/create_image.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/create_image.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
    f. Deploy / Helm Install Stage: Click "Add build step"->"Execute Shell". In the window, type in this line  
-        &ensp;bash -e ${project_root_dir}/jenkins/deploy.sh ${project_root_dir} ${WORKSPACE}  
+        &ensp;bash ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR}/jenkins/deploy.sh ${PREDICT_SUPPLIER_PROJECT_ROOT_DIR} ${WORKSPACE}  
    g. Post-build Actions section (if you dont see it, then make sure you have the JUnit plugin installed)  
         &ensp;Test reports XMLs: **/predict_supplier_results.xml  
       Dont change the above report name, as this is the file where the pytest is dumping the report. If you are going to change this, then update the jenkins/test.sh accordingly  
