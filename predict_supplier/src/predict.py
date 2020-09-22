@@ -1,7 +1,7 @@
 import requests
 
 
-data = {'item': 'Street Bike'}
+data = {'item': 'Jersey', 'category': 'Sports'}
 
 response = requests.get('http://127.0.0.1:5000//api/v1/sourcing/supplier_prediction', params=data)
 print('Status code: {}'.format(response.status_code))

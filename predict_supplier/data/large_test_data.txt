@@ -1,4 +1,10 @@
 ITEM_DESCRIPTION	CATEGORY
+Toner	Office Supplies
+Beans	Food
+Water	Food
+Envelope	Office Supplies
+Copier	Office Equipment
+Desk	Furniture
 Water Can - 12 gallon	Building Services
 Water Can	Building Services
 Water	Building Services

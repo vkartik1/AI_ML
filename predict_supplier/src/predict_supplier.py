@@ -36,7 +36,7 @@ def predict_supplier():
     
     # Create an empty list for our results
     results = []
-    supplier=predict(item)
+    supplier=predict(item, category)
     results.append(supplier)
 
     # Use the jsonify function from Flask to convert our list of
@@ -45,11 +45,11 @@ def predict_supplier():
     return jsonify(results)
 
 ######### Prediction ##########
-def predict(item):
+def predict(item, category):
 
     loadedModel = pickle.load(open("supplier_predictions.pkl","rb"))
-    data={'ITEM_DESCRIPTION': [item]}
-    items=pd.DataFrame(data, columns=['ITEM_DESCRIPTION'])
+    data={'ITEM_DESCRIPTION': [item], 'CATEGORY': [category]}
+    items=pd.DataFrame(data)
     new_y_pred=loadedModel.predict(items)
         
     probabilities = loadedModel.predict_proba(items)
