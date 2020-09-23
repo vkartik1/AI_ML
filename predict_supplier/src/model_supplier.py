@@ -67,7 +67,7 @@ classifier = Pipeline([
 #            ('cat_tfidf', TfidfVectorizer(tokenizer=Tokenizer, stop_words=stemmed_words, min_df=.0025, max_df=0.25, ngram_range=(1,3))),
         ]))
     ])),
-    ('clf', LinearSVC(C=0.01, penalty="l1", dual=False)),
+    ('clf', RandomForestClassifier()),
     ])
 
 # Create space of candidate learning algorithms and their hyperparameters
@@ -75,10 +75,9 @@ classifier = Pipeline([
 #               'features__item__item_tfidf__ngram_range': [(1, 3)],
 #               'features__item__item_tfidf__stop_words': [None, stemmed_words],
 search_space = [
-                {'clf': [LogisticRegression()] },
+#                {'clf': [LogisticRegression()], 'clf__C': [10.0,  100.0]},
                 {'clf': [RandomForestClassifier()] },
-                {'clf': [MultinomialNB()] },
-                {'clf': [LinearSVC()],  'clf__C': [1.0, 10.0, 100.0]}
+                {'clf': [MultinomialNB()] }
                ]
 
 from sklearn.model_selection import GridSearchCV

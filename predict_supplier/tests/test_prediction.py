@@ -20,7 +20,7 @@ from flask import jsonify
 from predict_supplier import app
 
 def test_single_api_call():
-    data = {'item': 'Yellow bike helmet'}
+    data = {'item': 'yellow bike', 'category': 'sports'}
 
     # expected_response = [[{'supplier': 'REI', 'probability': 0.37}, {'supplier': 'Olympia Sporting Goods', 'probability': 0.26}]]
 
@@ -31,7 +31,7 @@ def test_single_api_call():
         print(data)
         assert response.status_code == 200
         assert ((data[0][0]["supplier"] == 'REI' and data[0][0]["probability"] >= 0.10) or (data[0][1]["supplier"] == 'REI' and data[0][1]["probability"] >= 0.10 ))
-        assert ((data[0][0]["supplier"] == 'Olympia Sporting Goods' and data[0][0]["probability"] >= 0.20) or (data[0][1]["supplier"] == 'Olympia Sporting Goods'and data[0][1]["probability"] >= 0.20 ))
+        assert ((data[0][0]["supplier"] == 'Olympia Sporting Goods' and data[0][0]["probability"] >= 0.10) or (data[0][1]["supplier"] == 'Olympia Sporting Goods'and data[0][1]["probability"] >= 0.10 ))
      
         # response.data returns bytes, convert to a dict.
         # assert json.loads(response.data) == expected_response
