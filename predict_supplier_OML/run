@@ -1,0 +1,29 @@
+#!/bin/bash
+clear
+. db_info
+echo
+echo "=== Supplier Prediction ==="
+echo "Database = $DB_TNS"
+echo
+
+while [ $# -ne 0 ]
+do
+    # If you want Lower case: ${arg,,}. Below line is doing upper case
+    arg="${1^^}"
+
+    case $arg in
+      SVM|RF|NB) model=$arg;;
+      [1-6]*) num_rows=$arg;;
+      TRACE*) trace=$arg;;
+      PARA*) parallel=$arg;;
+      *) echo "Invalid Option. Example: ./run [svm/rf/nb] 1000 trace_on [parallel]"; exit 1;
+    esac
+    shift
+done
+num_rows=${num_rows:-1000000}
+
+echo "Creating trend/input data tables and the Algorithm settings tables.."
+sqlplus -S $DB_TNS @ create_tables >& /dev/null
+sqlplus -S $DB_TNS @ populate_settings.sql ${parallel:-NO_PARALLEL} |grep -v "PL/SQL procedure successfully completed"
+sqlldr $DB_TNS data=input_data.txt control=input_data.ctl log=input_data.log skip=1 load=$num_rows SILENT=ALL >& /dev/null
+sqlplus -S $DB_TNS   @model_and_predict.sql ${model:-RF} ${trace:-TRACE_OFF}  |grep -v "PL/SQL procedure successfully completed"

@@ -1,0 +1,2 @@
+DB_TNS=user/password@//host.abccom:1522/DB_SID
+
