@@ -1,6 +1,6 @@
-## Predict Supplier, with probability, for a given Item and Category
+## Recommend Supplier, with probability, for a given Item and Category
 
-We will create prediction REST API that will predict a supplier for a given item and category. We will try running the REST APi in differen ways - from running python command to using helm. 
+We will create a REST API that will recommend a supplier for a given item and category. We will try running the REST APi in differen ways - from running python command to using helm. 
 1. We will first create a model and try running this via flask server usingG python command   
 2. Then, instead of running the REST API using the python command, we will use Docker
 3. We will then deploy the app on the kubernetes cluster running on 4 pods (replicas=4)
