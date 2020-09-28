@@ -3,7 +3,7 @@
 ### Overview 
 This project
 1. Creates a model using the DBMS_DATA_MINING.CREATE_MODEL procedure and. 
-2. Predicts the supplier and its probability using the 2 OML plsql functions: PREDICTION and PREDICTION_PROBABILITY. 
+2. Recommends the supplier and its probability using the 2 OML plsql functions: PREDICTION and PREDICTION_PROBABILITY. 
 
 
 ### How to run  
