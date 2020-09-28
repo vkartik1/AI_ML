@@ -1,4 +1,4 @@
-# Contains AI/ML features 
+# Implementing AI/ML Solutions 
 Review the Readme in individual folders (e.g. predict_supplier) on how to start and invoke the prediction service
 
 ### predict supplier using python
