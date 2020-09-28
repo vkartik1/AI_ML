@@ -36,44 +36,44 @@ This project
 ###  Optional Read from here on - Feel free to skip
 
 #### Files 
-db_info               : Override the db/tns info here
-run                   : Main script to be run to create model and do supplier prediction. 
-                        The run script uses the below files 
-  create_tables.sql                  : Create the 2 tables needed for model creation to work
-  populate_settings.sql              : Populate the settings tables (e.g. 
-  input_data.txt                     : Trend data to be loaded, based on which prediction will be done
-  input_data.ctl                     : sqlldr Control file for the input_data.txt 
-  model_and_predict.sql              : creates the model and calls the prediction sql to predict the supplier for
-                                       item='manila booklet envelope' and category='Office Equipment, Accessories and Supplies'
-                                       This prints the predicted supplier, the trace files for 
-                                       a) model creation API and b) prediction SQL
-  predict.trc                        : Sample trace file for the PREDICTION and PREDICTION_PROBABILITY APIs
-  create_model.trc                   : Sample trace file for the DBMS_DATA_MINING.CREATE_MODEL
+db_info               : Override the db/tns info here. 
+run                   : Main script to be run to create model and do supplier prediction.  
+                        The run script uses the below files. 
+  create_tables.sql                  : Create the 2 tables needed for model creation to work. 
+  populate_settings.sql              : Populate the settings tables.  
+  input_data.txt                     : Trend data to be loaded, based on which prediction will be done. 
+  input_data.ctl                     : sqlldr Control file for the input_data.txt.  
+  model_and_predict.sql              : creates the model and calls the prediction sql to predict the supplier for. 
+                                       item='manila booklet envelope' and category='Office Equipment, Accessories and Supplies'. 
+                                       This prints the predicted supplier, the trace files for. 
+                                       a) model creation API and b) prediction SQL. 
+  predict.trc                        : Sample trace file for the PREDICTION and PREDICTION_PROBABILITY APIs. 
+  create_model.trc                   : Sample trace file for the DBMS_DATA_MINING.CREATE_MODEL. 
 
 #### Methods for which the SQL trace is being collected 
 Copied from the model_and_predict.sql
 
-1> Model creation API for whch Tracing is being done
-    DBMS_DATA_MINING.CREATE_MODEL(
-      model_name          => 'SVM_PREDICT_SUPPLIER',
-      mining_function     => dbms_data_mining.classification,
-      data_table_name     => 'AIML_SUPPLIER_TREND',
-      case_id_column_name => NULL,
-      target_column_name  => 'supplier',
-      settings_table_name => 'SVM_MODEL_SETTINGS');
-
-2> Prediction SQL for which tracing is being done
-    SELECT
-      item_description,
-      category,
-      PREDICTION(SVM_PREDICT_SUPPLIER USING *) predicted_supplier,
-      PREDICTION_PROBABILITY(SVM_PREDICT_SUPPLIER USING *) predicted_supplier
-   INTO
-      l_item,
-      l_category,
-      l_supplier,
-      l_prob
-    FROM
-      (select 'manila booklet envelope' ITEM_DESCRIPTION, 'Office Equipment, Accessories and Supplies' CATEGORY
-      from dual);
+1> Model creation API for whch Tracing is being done. 
+&ensp;    DBMS_DATA_MINING.CREATE_MODEL(. 
+&ensp;      model_name          => 'SVM_PREDICT_SUPPLIER',  
+&ensp;      mining_function     => dbms_data_mining.classification,  
+&ensp;      data_table_name     => 'AIML_SUPPLIER_TREND',  
+&ensp;      case_id_column_name => NULL,  
+&ensp;      target_column_name  => 'supplier',  
+&ensp;      settings_table_name => 'SVM_MODEL_SETTINGS');  
+  
+2> Prediction SQL for which tracing is being done. 
+&ensp;    SELECT. 
+&ensp;      item_description,  
+&ensp;      category,  
+&ensp;      PREDICTION(SVM_PREDICT_SUPPLIER USING *) predicted_supplier,  
+&ensp;      PREDICTION_PROBABILITY(SVM_PREDICT_SUPPLIER USING *) predicted_supplier. 
+&ensp;   INTO. 
+&ensp;      l_item,  
+&ensp;      l_category,  
+&ensp;      l_supplier,  
+&ensp;      l_prob
+&ensp;    FROM  
+&ensp;      (select 'manila booklet envelope' ITEM_DESCRIPTION, 'Office Equipment, Accessories and Supplies' CATEGORY. 
+&ensp;      from dual);  
                           
