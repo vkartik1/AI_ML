@@ -30,8 +30,8 @@ This project
        ./run trace_off 10000 
   
 3. The ./run will print predicted supplier and will also print 2 trace filenames (, if trace_on,) of the below format.   
-&ensp;     Model creation trace filename : *AIML_MODEL.trc. 
-&ensp;     Prediction trace filename     : *AIML_PREDICT.trc. 
+&ensp;     Model creation trace filename : *AIML_MODEL.trc.   
+&ensp;     Prediction trace filename     : *AIML_PREDICT.trc.   
 
 ###  Optional Read from here on - Feel free to skip
 
