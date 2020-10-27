@@ -1,10 +1,11 @@
 ## Recommend Supplier, with probability, for a given Item and Category
 
-We will create a REST API that will recommend a supplier for a given item and category. We will try running the REST APi in differen ways - from running python command to using helm. 
-1. We will first create a model and try running this via flask server usingG python command   
+We will create a REST API that will recommend a supplier for a given item and category. In a series of incremental improvements, we will eventually deliver a Jenkins pipeline to build, test and deploy the REST API. 
+1. We will first create a model and try running this via flask server using python command   
 2. Then, instead of running the REST API using the python command, we will use Docker
 3. We will then deploy the app on the kubernetes cluster running on 4 pods (replicas=4)
-4. Lastly we will use helm - just for learning purpose. There is not really much value for helm, for this simple usecase
+4. We will use helm - just for learning purpose. There is not really much value for helm, for this simple usecase
+5. Finally create a jenkins pipeline to build, test and deploy
 
 ### Create a model and deploy it on a flask server
 1. Generate the model pickle file and also print predictions for a sample data specified in, data/test_data.txt.  
