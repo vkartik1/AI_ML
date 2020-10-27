@@ -46,7 +46,7 @@ kill the docker-compose (ctrl-c)
 
 Helm Note (optional read): This just describes what changes were done to generate the code. Feel free to skip this notes section. 
 1. I have created the helm directories with the "helm create supplier-chart" command.   
-2. The deployment.yaml that was created in previous section (Kubernetes support) is used instead of the default serices.yaml and deployment.yaml created by the helm create command. The deployment.yaml has been splt to deployment.yaml and service.yaml with variables instead of hardcoded values. 
+2. The deployment.yaml that was created in previous section (Kubernetes support) is used instead of the default serices.yaml and deployment.yaml created by the helm create command. The deployment.yaml has been split to deployment.yaml and service.yaml with variables instead of hardcoded values. 
 3. Deleted other yaml files and modified the  values.yaml to keep the port#s consistent with the values used in previous steps: load balancer port=6000. 
 4. Review the values.yaml for the comment "Modification", to see what changes were done. 
 
