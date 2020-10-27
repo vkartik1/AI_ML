@@ -26,12 +26,12 @@ This project
        ./run 
  
      Parameter position doesnt matter. 
-     Below command uses Random Forest model for 10K rows and with trace off and parallel=off
+     Below command uses Random Forest model for 10K rows and with trace off and parallel=off.   
        ./run trace_off 10000 
   
-3. The ./run will print predicted supplier and will also print 2 trace filenames (, if trace_on,) of the below format. 
-&ensp;     Model creation trace filename : *AIML_MODEL.trc. 
-&ensp;     Prediction trace filename     : *AIML_PREDICT.trc. 
+3. The ./run will print predicted supplier and will also print 2 trace filenames (, if trace_on,) of the below format.   
+&ensp;     Model creation trace filename : *AIML_MODEL.trc.   
+&ensp;     Prediction trace filename     : *AIML_PREDICT.trc.   
 
 ###  Optional Read from here on - Feel free to skip
 
