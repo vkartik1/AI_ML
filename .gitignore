@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 *.pkl
 **/*.pkl
+predict_supplier_OML/input_data.log
