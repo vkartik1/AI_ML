@@ -1,8 +1,18 @@
-# Implementing AI/ML Solutions 
-Review the Readme in individual folders on how to start and invoke the recommendation service
+# Implementing Cognitive Sourcing using AI/ML, NLP, and MLOps
+Review the Readme in individual folders on how to start and invoke the recommendation service. 
+
+**Traditional Sourcing:** Oracle Sourcing is an enterprise application used to source goods and services using online collaboration and negotiation. In a typical sourcing flow, customers(a.k.a buyers) create RFQs and Auctions, invite suppliers (who can provide the goods/services) to the auctions, suppliers bid for the auction, and buyers select the winning bid to procure goods from the supplier. Buyers use their institutional knowledge or spreadsheet to decide which suppliers to invite for a specific item. There are several downsides with this traditional sourcing approach - maintenance of a mapping between items and suppliers to be invited, static supplier listing which doesn't take into account supplier performance, or new suppliers. This results in maintenance overhead, low buyer productivity, and lost cost savings opportunities.
+
+**Cognitive sourcing**: Cognitive sourcing helps buyers by recommending suppliers to be invited for a given item. This could be based on past supplier performance, potential savings, and various other factors. As part of the EDA(exploratory data analysis) phase, data is extracted various sources/tables in the SCM/Procurement applications - e.g. past negotiations/auctions, bids, purchase orders, and supplier master info, etc. This data is cleaned, aggregated and using NLP and ML recommendation algorithms, cognitive sourcing will recommend suppliers to the buyer for a given item.
+
+**Approaches**: I am highlighting the 2 approaches tried out for this implementation. 1> Python approach using scikit libraries 2> OML (Oracle machine language), a database based approach which takes in the table/column information, applies AutoML and generates+picks the optimal model. While the OML with AutoML is the more easy approach, it has the downside of all the data residing in the RDBMS leading to potential scalability/performance issues. Selected the more cloud native solution using the python libraries for cognitive souring. In the python code, created a sklearn.pipeline with different ML algorithms to be tested and used the GridSearchCV feature to pick the optimal model from the models listed in the pipeline. Used pytest as the testing framework and plugged it into Jenkins for build, test and deployment.  
+
+**Purpose of this github project**: This github work is a proof of concept/prototype for the actual cognitive sourcing done at Oracle. With MLOps, the whole process starting from EDA (Exploratory Data Analysis) to determining the best deployment model is automated. This proof of concept is using Docker, Kubernetes, Helm chart, and Jenkins for MLOps. Deployment was done to a flask server. In production, we used the OCI public cloud to deploy the supplier recommendation service. 
+
+**What's missing**: Feature store to be considered, Comparison with Databricks MLflow,..
 
 ### predict_supplier_Python: Recommend supplier using python libraries
-This project implements a and to end solution with Jenkins pipe line to a) recommend suppliers for an item and category using python libraries b) build an automated test c) create a docker image d) create a helm chart and deploy the image to a cluster 
+This project implements an and to end solution with Jenkins pipeline to a) recommend suppliers for an item and category using Python libraries b) build an automated test c) create a docker image d) create a helm chart and deploy the image to a cluster 
 
 ### predict_supplier_OML: Recommend Supplier using OML (Oracle Machine Language)
-This project shows how to implement the "recommend supplier for a given item/category" feature using OML, am easy way of implementing ML without moving the data out of the database. The model is created within the Oracle database. 
+This project shows how to implement the "recommend supplier for a given item/category" feature using OML, an easy way of implementing ML without moving the data out of the database. The model is created within the Oracle database. 
